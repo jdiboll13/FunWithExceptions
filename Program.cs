@@ -15,6 +15,10 @@ namespace FunWithExceptions
             Console.WriteLine("Enter a number.");
             getSafeInt();
 
+            int[] numbers = {12, 23, 45, 15};
+            int length = 4;
+            sumOfNumbers(numbers, length);
+
             Console.WriteLine("\n****\nI'm done!!!\n****\n");
         }
         public static int divideInts(int a, int b)
@@ -46,12 +50,30 @@ namespace FunWithExceptions
         }
         public static int sumOfNumbers(int[] numbers, int length)
         {
-            int total = 0;
-            foreach (var num in numbers)
+            try
             {
-                total += num;
+                if (length == numbers.Length)
+                {
+                    int total = 0;
+                    foreach (var num in numbers)
+                    {
+                        total += num;
+                    }
+                    Console.WriteLine("Numbers is the proper length.");
+                    return total;
+                }
+                else
+                {
+                    throw new Exception();
+                }
+                
             }
-            return total;
+            catch (Exception)
+            {
+                Console.WriteLine("Numbers is not the proper length.");
+                return 0;
+            }
+
         }
     }
 }
