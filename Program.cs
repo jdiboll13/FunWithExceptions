@@ -6,11 +6,29 @@ namespace FunWithExceptions
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Pick a number.");
+            int a = int.Parse(Console.ReadLine());
+            Console.WriteLine("Pick another number.");
+            int b = int.Parse(Console.ReadLine());
+            divideInts(a, b);
+
+            Console.WriteLine();
+
             Console.WriteLine("\n****\nI'm done!!!\n****\n");
         }
         public static int divideInts(int a, int b)
         {
-            return a / b;
+            try
+            {
+                return a / b;
+            }
+            catch (DivideByZeroException)
+            {
+                Console.WriteLine("You can't divide by zero. Try a different number.");
+                b = int.Parse(Console.ReadLine());
+                return divideInts(a, b);
+            }
+            
         }
         public static int getSafeInt()
         {
