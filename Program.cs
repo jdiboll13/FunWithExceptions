@@ -12,7 +12,8 @@ namespace FunWithExceptions
             int b = int.Parse(Console.ReadLine());
             divideInts(a, b);
 
-            Console.WriteLine();
+            Console.WriteLine("Enter a number.");
+            getSafeInt();
 
             Console.WriteLine("\n****\nI'm done!!!\n****\n");
         }
@@ -20,6 +21,7 @@ namespace FunWithExceptions
         {
             try
             {
+                Console.WriteLine(a /b);
                 return a / b;
             }
             catch (DivideByZeroException)
@@ -32,7 +34,15 @@ namespace FunWithExceptions
         }
         public static int getSafeInt()
         {
-            return int.Parse(Console.ReadLine());
+            try
+            {
+                return int.Parse(Console.ReadLine());
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("you did not enter a number"); 
+                return getSafeInt();
+            }
         }
         public static int sumOfNumbers(int[] numbers, int length)
         {
