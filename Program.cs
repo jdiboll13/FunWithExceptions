@@ -59,7 +59,6 @@ namespace FunWithExceptions
                     {
                         total += num;
                     }
-                    Console.WriteLine("Numbers is the proper length.");
                     return total;
                 }
                 else
